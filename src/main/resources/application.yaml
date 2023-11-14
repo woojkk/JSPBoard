@@ -1,0 +1,26 @@
+
+server:
+  port: 8090
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views
+      suffix: .jsp
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: false
+
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/orcl
+    username: c##scott
+    password: tiger
+
+mybatis:
+  mapper-locations: classpath:sqlmapper/*.xml
+  configuration:
+    map-Underscore-To-Camel-Case: true
