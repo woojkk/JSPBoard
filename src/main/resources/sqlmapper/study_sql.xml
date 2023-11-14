@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "classpath:org/mybatis/spring/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.jspboard.dao.StudyDAO">
+  <select id="doStudyList" resultType="com.example.jspboard.vo.StudyVO">
+    SELECT to_char(KEY_ID) AS key_id, STUDY_DAY, CONTENTS, to_char(REG_DAY, 'yyyy.mm.dd hh24:mi') AS reg_day
+    FROM STUDY_RECORD
+  </select>
+</mapper>
