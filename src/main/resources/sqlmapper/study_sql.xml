@@ -4,8 +4,32 @@
   "classpath:org/mybatis/spring/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.jspboard.dao.StudyDAO">
+
+  <insert id="createStudy">
+    INSERT INTO study_record(study_day, contents, created_at, updated_at)
+    VALUES ( #{studyDay}, #{contents}, sysdate, sysdate)
+  </insert>
+
   <select id="doStudyList" resultType="com.example.jspboard.vo.StudyVO">
-    SELECT to_char(KEY_ID) AS key_id, STUDY_DAY, CONTENTS, to_char(REG_DAY, 'yyyy.mm.dd hh24:mi') AS reg_day
-    FROM STUDY_RECORD
+    SELECT to_char(key_id) AS key_id, STUDY_DAY, CONTENTS, to_char(created_at, 'yyyy.mm.dd hh24:mi') AS created_at, to_char(updated_at, 'yyyy.mm.dd hh24:mi') as updated_at
+    FROM study_record
+    ORDER BY key_id
   </select>
+
+  <select id="doStudy" resultType="com.example.jspboard.vo.StudyVO">
+    SELECT to_char(key_id) AS key_id, STUDY_DAY, CONTENTS, to_char(created_at, 'yyyy.mm.dd hh24:mi') AS created_at, to_char(updated_at, 'yyyy.mm.dd hh24:mi') as updated_at
+    FROM study_record
+    WHERE key_id = #{strKeyId}
+  </select>
+
+  <update id="doStudyUp" parameterType="com.example.jspboard.vo.StudyVO">
+    UPDATE study_record
+    SET study_day = #{studyDay}, contents = #{contents}, updated_at = sysdate
+    WHERE key_id = #{keyId}
+  </update>
+
+  <delete id="studyDel">
+    DELETE FROM study_record
+    WHERE key_id = #{strKeyId}
+  </delete>
 </mapper>
