@@ -1,16 +1,13 @@
 package com.example.jspboard.vo;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Data
 public class StudyVO {
 
   private String keyId;
   private String studyDay;
   private String contents;
-  private String regDay;
+  private String createdAt;
+  private String updatedAt;
 }

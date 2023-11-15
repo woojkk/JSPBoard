@@ -16,4 +16,21 @@ public class StudyService {
   public List<StudyVO> doStudyList() {
     return studyDAO.doStudyList();
   }
+
+  public StudyVO doStudy(String strKeyId) {
+    return studyDAO.doStudy(strKeyId);
+  }
+
+  public int doStudyUp(StudyVO studyVO) {
+    return studyDAO.doStudyUp(studyVO);
+  }
+
+
+  public void deleteStudy(String strKeyId) {
+    studyDAO.studyDel(strKeyId);
+  }
+
+  public void createStudy(StudyVO studyVO) {
+    studyDAO.createStudy(studyVO);
+  }
 }
