@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%
+  String strMessage = (String) request.getAttribute("message");
+  if(strMessage==null){ strMessage = "ID와 비밀번호를 입력해 주세요"; }
+%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,21 +28,16 @@
   <form>
     <h1 class="h3 mb-3 fw-normal">로그인</h1>
 
+    <div><label><%=strMessage%></label></div>
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">이메일</label>
+      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">아이디</label>
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">비밀번호</label>
     </div>
 
-    <div class="form-check text-start my-3">
-      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Remember me
-      </label>
-    </div>
     <button class="btn btn-primary w-100 py-2" type="submit">로그인</button>
     <p class="mt-5 mb-3 text-body-secondary">&copy; 2023–2023</p>
   </form>
