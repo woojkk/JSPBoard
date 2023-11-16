@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "classpath:org/mybatis/spring/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.jspboard.dao.MemberDAO">
+
+  <insert id="createMember">
+    INSERT INTO study_member(login_id, name, password, gender, created_at)
+    VALUES ( #{loginId}, #{name}, #{password}, #{gender}, sysdate)
+  </insert>
+
+  <select id="doMemberList" resultType="com.example.jspboard.vo.MemberVO">
+    SELECT to_char(member_id) AS member_id, LOGIN_ID, NAME, GENDER, to_char(created_at, 'yyyy.mm.dd hh24:mi') AS created_at
+    FROM study_member
+    ORDER BY member_id
+  </select>
+
+  <select id="doMember" resultType="com.example.jspboard.vo.MemberVO">
+    SELECT to_char(member_id) AS member_id, login_id, name, gender, to_char(created_at, 'yyyy.mm.dd hh24:mi') AS created_at
+    FROM study_record
+    WHERE member_id = #{strMemberId}
+  </select>
+
+  <update id="doMemberUp" parameterType="com.example.jspboard.vo.MemberVO">
+    UPDATE study_member
+    SET name = #{name}, gender = #{gender}, created_at = sysdate
+    WHERE member_id = #{strMemberId}
+  </update>
+
+  <delete id="memberDel">
+    DELETE FROM study_member
+    WHERE member_id = #{strMemberId}
+  </delete>
+</mapper>

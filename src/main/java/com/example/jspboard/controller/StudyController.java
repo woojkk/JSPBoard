@@ -23,13 +23,13 @@ public class StudyController {
   private final StudyService studyService;
 
   @GetMapping("")
-  public String doStudy_reg(Model model) {
+  public String doStudyReg(Model model) {
 
     List<StudyVO> list = studyService.doStudyList();
 
     model.addAttribute("list", list);
 
-    return "/studyReg";
+    return "/study/studyReg";
   }
 
   @GetMapping("/insert")
