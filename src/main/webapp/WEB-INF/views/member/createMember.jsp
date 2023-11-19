@@ -45,6 +45,8 @@
         <input type="radio" name="gender" autocapitalize="off" value="여자" checked>여자
       </label>
     </div>
+    <div><label>권한</label> <input type="radio" name="role" value="MEMBER">MEMBER
+      <input type="radio" name="role" value="ADMIN">ADMIN</div>
     <br>
 
     <button class="w-100 btn btn-lg btn-primary py-2" type="submit">회원가입</button>
